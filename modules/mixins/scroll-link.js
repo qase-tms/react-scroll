@@ -36,32 +36,14 @@ export default (Component, customScroller) => {
       };
     }
 
-    scrollTo = (to, props) => {
+    scrollTo = (to = this.props.to, props = this.props) => {
       scroller.scrollTo(to, Object.assign({}, this.state, props));
     }
 
     handleClick = (event) => {
-
-      /*
-       * give the posibility to override onClick
-       */
-
       if (this.props.onClick) {
         this.props.onClick(event);
       }
-
-      /*
-       * dont bubble the navigation
-       */
-
-      if (event.stopPropagation) event.stopPropagation();
-      if (event.preventDefault) event.preventDefault();
-
-      /*
-       * do the magic!
-       */
-      this.scrollTo(this.props.to, this.props);
-
     }
 
     spyHandler = (y) => {
