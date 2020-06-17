@@ -42,8 +42,10 @@ export default (Component, customScroller) => {
 
     handleClick = (event) => {
       if (this.props.onClick) {
-        this.props.onClick(event);
+        return this.props.onClick(event);
       }
+      
+      this.scrollTo(this.props.to, this.props);
     }
 
     spyHandler = (y) => {
